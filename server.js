@@ -44,7 +44,7 @@ app.get('/api/notes', (req, res) => {
   res.json(notes);
 });
 
-//-- setting notes
+//-- setting note into database
 app.post('/api/notes', (req, res) => {
 
   console.info(`${req.method} request received to add a note.`);
@@ -62,11 +62,25 @@ app.post('/api/notes', (req, res) => {
 
     const response = {
       status: 'success',
-      body: newNote,
+      body: JSON.stringify(newNote),
     };
 
     //-- Testing a response here
-    console.log(response);
+    console.log(`Received post response: ${response}`);
+
+    fs.readFile('db/notes.json', function (err, data) {
+      var json = JSON.parse(data);
+      json.push(newNote); 
+      fs.writeFile("db/notes.json", JSON.stringify(json, null, 4), function(err){
+        //-- if error, exit
+        if (err) throw err;
+        
+        //-- otherwise log
+        console.log('The "data to append" was appended to file!');
+      });
+  })
+
+
     
     //-- send response back to request
     res.json(response);
