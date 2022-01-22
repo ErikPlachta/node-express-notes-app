@@ -51,12 +51,13 @@ app.post('/api/notes', (req, res) => {
 
 
   //-- Extract payload
-  const { title, body } = req.body;
+  const { title, text } = req.body;
+  console.log(req.body);
   
-  if (title && body) {
+  if (title && text) {
     const newNote = {
       title,
-      body,
+      text,
       note_ID: uuid(),
     }
 
@@ -66,9 +67,10 @@ app.post('/api/notes', (req, res) => {
     };
 
     //-- Testing a response here
-    console.log(`Received post response: ${response}`);
+    console.log(`Received post response: ${newNote}`);
 
     fs.readFile('db/notes.json', function (err, data) {
+      console.log(`Received payload: ${data}`)
       var json = JSON.parse(data);
       json.push(newNote); 
       fs.writeFile("db/notes.json", JSON.stringify(json, null, 4), function(err){
