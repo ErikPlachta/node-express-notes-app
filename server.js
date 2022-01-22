@@ -11,6 +11,8 @@ const app = express();
 //-- Required to push to a HTML
 const path = require('path');
 
+//-- to write note to database
+const fs = require('fs');
 
 // Helper method for generating unique ids
 const uuid = require('./helpers/uuid');
@@ -65,7 +67,8 @@ app.post('/api/notes', (req, res) => {
 
     //-- Testing a response here
     console.log(response);
-
+    
+    //-- send response back to request
     res.json(response);
   }
   else {
