@@ -9,48 +9,30 @@ Using Node to run an Express server hosted on Heroku
 
 ## Index
 
-- [Useage](#useage)
-    - [Requirements](#requirements)
-    - [Installation](#installation)
-    - [Using The App](#using-the-app)
-    - [Starting the App](#starting-the-app)
-    - [Viewing Results](#viewing-results)
-    - [Repo Stats](#repo-stats)
-    - [Video of Full Process](#video-of-full-process)
+- [Requirements](#requirements)
+- [Using The App](#using-the-app)
+- [Video of Full Process](#video-demonstrating-useage)    
+- [Repo Stats](#repo-stats)
 - [Contributors](#contributors)
 - [Questions?](#questions)
+- [Future Goals](#future-goals)
 
-## Usage
+## Using the App
 
 > This APP is hosted here: <a href="fast-peak-76189.herokuapp.com/">fast-peak-76189.herokuapp.com/</a>, 
 > and be used by anyone simply by browsing this URL.
 
-### Requirements
+## Requirements
 
 - Active internet connection.
 - A web-brower.
 
-### Starting The App
+## Video Demonstrating Useage
 
-<!-- ![Starting App](./assets/images/startapp.gif) -->
-<img src="./assets/images/startapp.gif" width="600">
-
-### Using the App
-
-<!-- ![Using App](./assets/images/useapp.gif) -->
-<img src="./assets/images/useapp.gif" width="600">
-
-### Viewing Results
-
-<!-- ![Results Example](./assets/images/results.gif) -->
-<img src="./assets/images/results.gif" width="600">
-
-
-### Video of Full Process
-
-- For your convience, here is a video/gif of the full process
-<!-- ![full process of using and results](./assets/full.gif) -->
-<img src="./assets/images/full.gif" width="600">
+Here is a video demonstrating what the APP can do!
+> *Typo at end of video, 'notes' is meant to be singular. ( 'note' not 'notes' )*
+<!-- ![full process of using and results](./assets/demo-full.gif) -->
+<img src="./public/assets/images/demo-full.gif" width="600">
 
 ## Repo Stats
 
@@ -70,12 +52,27 @@ Using Node to run an Express server hosted on Heroku
 
 ### [Erik Plachta](https://github.com/ErikPlachta)
 
-- Reviewed concept, and re-built from the ground up.
+- Built Node.js that is running an Express.js to play as a gateway between the EU
+and Heroku. 
+- Personalized source content
 
-### [Xandromus](https://github.com/Xandromus)
+### [Xandromus - AKA - Xander Rapstine](https://github.com/Xandromus)
 
-- Built the concept of the project.
+- Built the HTML, CSS, and JS framework of the project
+
+---
 
 ## Questions?
 
-> Feel free to contact me on my twitter  @ErikPlachta
+Let's get in touch :point_down:
+
+> Feel free to contact me on my Twitter @ErikPlachta 
+
+---
+
+## Future Goals
+
+- [ ] Add testing with [Jest - Issue #22](https://github.com/ErikPlachta/node-express-notes-app/issues/22)
+- [ ] Add [Modular routing with Express - Issue #19](https://github.com/ErikPlachta/node-express-notes-app/issues/19)
+- [ ] Add [System Database for Admin Logging - Issue #20](https://github.com/ErikPlachta/node-express-notes-app/issues/20)
+- [ ] Add [Ability to edit existing notes - Issue #21](https://github.com/ErikPlachta/node-express-notes-app/issues/21)
