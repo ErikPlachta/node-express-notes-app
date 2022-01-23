@@ -151,7 +151,10 @@ app.delete('/api/notes/:id', (req, res) => {
         if (err) throw err;
         
         //-- otherwise log
-        console.log('The "data to append" was appended to file!');
+        console.info(`The note with id: ${id} has been removed from the database.`);
+        res.json(`The note with id: ${id} has been removed from the database.`);
+
+        res.me
       });
     });
   }
