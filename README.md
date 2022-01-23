@@ -16,7 +16,7 @@ Using Node to run an Express server hosted on Heroku
     - [Starting the App](#starting-the-app)
     - [Viewing Results](#viewing-results)
     - [Repo Stats](#repo-stats)
-    - [Video of Full Process](#video-of-full-process)
+[Video of Full Process](#video-demonstrating-useage)
 - [Contributors](#contributors)
 - [Questions?](#questions)
 
@@ -30,27 +30,12 @@ Using Node to run an Express server hosted on Heroku
 - Active internet connection.
 - A web-brower.
 
-### Starting The App
+## Video Demonstrating Useage
 
-<!-- ![Starting App](./assets/images/startapp.gif) -->
-<img src="./assets/images/startapp.gif" width="600">
-
-### Using the App
-
-<!-- ![Using App](./assets/images/useapp.gif) -->
-<img src="./assets/images/useapp.gif" width="600">
-
-### Viewing Results
-
-<!-- ![Results Example](./assets/images/results.gif) -->
-<img src="./assets/images/results.gif" width="600">
-
-
-### Video of Full Process
-
-- For your convience, here is a video/gif of the full process
-<!-- ![full process of using and results](./assets/full.gif) -->
-<img src="./assets/images/full.gif" width="600">
+Here is a video demonstrating what the APP can do!
+> *Typo at end of video, 'notes' is meant to be singular. ( 'note' not 'notes' )*
+<!-- ![full process of using and results](./assets/demo-full.gif) -->
+<img src="./assets/images/demo-full.gif" width="600">
 
 ## Repo Stats
 
