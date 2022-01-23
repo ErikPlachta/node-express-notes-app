@@ -9,23 +9,19 @@ Using Node to run an Express server hosted on Heroku
 
 ## Index
 
-- [Useage](#useage)
-    - [Requirements](#requirements)
-    - [Installation](#installation)
-    - [Using The App](#using-the-app)
-    - [Starting the App](#starting-the-app)
-    - [Viewing Results](#viewing-results)
-    - [Repo Stats](#repo-stats)
-[Video of Full Process](#video-demonstrating-useage)
+- [Requirements](#requirements)
+- [Using The App](#using-the-app)
+- [Video of Full Process](#video-demonstrating-useage)    
+- [Repo Stats](#repo-stats)
 - [Contributors](#contributors)
 - [Questions?](#questions)
 
-## Usage
+## Using the App
 
 > This APP is hosted here: <a href="fast-peak-76189.herokuapp.com/">fast-peak-76189.herokuapp.com/</a>, 
 > and be used by anyone simply by browsing this URL.
 
-### Requirements
+## Requirements
 
 - Active internet connection.
 - A web-brower.
@@ -55,12 +51,18 @@ Here is a video demonstrating what the APP can do!
 
 ### [Erik Plachta](https://github.com/ErikPlachta)
 
-- Reviewed concept, and re-built from the ground up.
+- Built Node.js that is running an Express.js to play as a gateway between the EU
+and Heroku. 
+- Personalized source content
 
-### [Xandromus](https://github.com/Xandromus)
+### [Xandromus - AKA - Xander Rapstine](https://github.com/Xandromus)
 
-- Built the concept of the project.
+- Built the HTML, CSS, and JS framework of the project
+
+---
 
 ## Questions?
 
-> Feel free to contact me on my twitter  @ErikPlachta
+Let's get in touch :point_down:
+
+> Feel free to contact me on my Twitter @ErikPlachta 
