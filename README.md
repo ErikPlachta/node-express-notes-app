@@ -76,3 +76,4 @@ Let's get in touch :point_down:
 - [ ] Add [Modular routing with Express - Issue #19](https://github.com/ErikPlachta/node-express-notes-app/issues/19)
 - [ ] Add [System Database for Admin Logging - Issue #20](https://github.com/ErikPlachta/node-express-notes-app/issues/20)
 - [ ] Add [Ability to edit existing notes - Issue #21](https://github.com/ErikPlachta/node-express-notes-app/issues/21)
+- [ ] Add [Mobile-Friendly Design - Issue #29](https://github.com/ErikPlachta/node-express-notes-app/issues/29)
