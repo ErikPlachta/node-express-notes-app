@@ -7,13 +7,27 @@ Using Node to run an Express server hosted on Heroku
 > can be used as an API gateway to a JSON database. Heroku is hosting the node server
 > here: <a href="fast-peak-76189.herokuapp.com/">fast-peak-76189.herokuapp.com/</a>.
 
+## Contributors
+
+### [Erik Plachta](https://github.com/ErikPlachta)
+
+- Built Node.js that is running an Express.js to play as a gateway between the EU
+and Heroku.
+- Personalized source content
+
+### [Xandromus - AKA - Xander Rapstine](https://github.com/Xandromus)
+
+- Built the HTML, CSS, and JS framework of the project
+
+---
+
 ## Index
 
-- [Requirements](#requirements)
+- [Contributors](#contributors)
 - [Using The App](#using-the-app)
+- [Requirements](#requirements)
 - [Video of Full Process](#video-demonstrating-useage)    
 - [Repo Stats](#repo-stats)
-- [Contributors](#contributors)
 - [Questions?](#questions)
 - [Future Goals](#future-goals)
 
@@ -47,18 +61,6 @@ Here is a video demonstrating what the APP can do!
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/erikplachta/readme-builder-with-nodejs)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/erikplachta/readme-builder-with-nodejs)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/y/erikplachta/readme-builder-with-nodejs)
-
-## Contributors
-
-### [Erik Plachta](https://github.com/ErikPlachta)
-
-- Built Node.js that is running an Express.js to play as a gateway between the EU
-and Heroku.
-- Personalized source content
-
-### [Xandromus - AKA - Xander Rapstine](https://github.com/Xandromus)
-
-- Built the HTML, CSS, and JS framework of the project
 
 ---
 
