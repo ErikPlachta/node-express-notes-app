@@ -1,7 +1,12 @@
 [
     {
-        "title": "Title Placeholder",
-        "text": "Body placeholder content",
-        "id": "f0ad"
+        "title": "Testing a note",
+        "text": "Making a new note to verify database mgmt integrity\n",
+        "id": "c1f9_20220231829903"
+    },
+    {
+        "title": "Testing editing existing",
+        "text": "Editing an existing note and pressing save creates a NEW note with the original content.\n",
+        "id": "034a_20220231937388"
     }
 ]
