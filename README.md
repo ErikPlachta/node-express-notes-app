@@ -15,6 +15,7 @@ Using Node to run an Express server hosted on Heroku
 - [Repo Stats](#repo-stats)
 - [Contributors](#contributors)
 - [Questions?](#questions)
+- [Future Goals](#future-goals)
 
 ## Using the App
 
@@ -31,7 +32,7 @@ Using Node to run an Express server hosted on Heroku
 Here is a video demonstrating what the APP can do!
 > *Typo at end of video, 'notes' is meant to be singular. ( 'note' not 'notes' )*
 <!-- ![full process of using and results](./assets/demo-full.gif) -->
-<img src="./assets/images/demo-full.gif" width="600">
+<img src="./public/assets/images/demo-full.gif" width="600">
 
 ## Repo Stats
 
@@ -66,3 +67,12 @@ and Heroku.
 Let's get in touch :point_down:
 
 > Feel free to contact me on my Twitter @ErikPlachta 
+
+---
+
+## Future Goals
+
+- [ ] Add testing with [Jest - Issue #22](https://github.com/ErikPlachta/node-express-notes-app/issues/22)
+- [ ] Add [Modular routing with Express - Issue #19](https://github.com/ErikPlachta/node-express-notes-app/issues/19)
+- [ ] Add [System Database for Admin Logging - Issue #20](https://github.com/ErikPlachta/node-express-notes-app/issues/20)
+- [ ] Add [Ability to edit existing notes - Issue #21](https://github.com/ErikPlachta/node-express-notes-app/issues/21)
