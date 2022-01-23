@@ -1,45 +1,17 @@
 [
     {
-        "title": "Test Title",
-        "text": "Test text"
-    },
-    {
-        "title": "Test Title 2",
-        "text": "Test text 2"
+        "title": "Erik",
+        "text": "and a first note",
+        "id": "0fe4"
     },
     {
         "title": "Title Placeholder",
-        "body": "Body placeholder content",
-        "note_ID": "4743"
+        "text": "Body placeholder content",
+        "id": "11b7"
     },
     {
-        "title": "Title Placeholder",
-        "body": "Body placeholder content",
-        "note_ID": "4e75"
-    },
-    {
-        "title": "Title Placeholder",
-        "body": "Body placeholder content",
-        "note_ID": "19d1"
-    },
-    {
-        "title": "Title Placeholder",
-        "body": "Body placeholder content",
-        "note_ID": "a3e1"
-    },
-    {
-        "title": "Title Placeholder",
-        "body": "Body placeholder content",
-        "note_ID": "d876"
-    },
-    {
-        "title": "Title Placeholder",
-        "body": "Body placeholder content",
-        "note_ID": "2cff"
-    },
-    {
-        "title": "abcd",
-        "text": "123d",
-        "note_ID": "18be"
+        "title": "test",
+        "text": "123",
+        "id": "02bd"
     }
 ]

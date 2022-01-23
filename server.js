@@ -53,24 +53,38 @@ app.post('/api/notes', (req, res) => {
   //-- Extract payload
   const { title, text } = req.body;
   console.log(req.body);
+  let response = {};
   
   if (title && text) {
-    const newNote = {
-      title,
-      text,
-      note_ID: uuid(),
-    }
-
-    const response = {
-      status: 'success',
-      body: JSON.stringify(newNote),
-    };
-
-    //-- Testing a response here
-    console.log(`Received post response: ${newNote}`);
-
+    
+    
+    //-- check database
     fs.readFile('db/notes.json', function (err, data) {
-      console.log(`Received payload: ${data}`)
+
+      //-- exit if errors
+      if (err) throw err;
+      
+      //-- otherwise itterate thru database
+      for(value in JSON.parse(data)){
+      console.log(value);
+      }
+
+      //-- prepare to write new entry
+      const newNote = {
+        title,
+        text,
+        id: uuid(),
+      }
+  
+      response = {
+        status: 'success',
+        body: JSON.stringify(newNote),
+      };
+  
+      //-- Testing a response here
+      // console.log(`Received post response: ${newNote}`);
+    
+      // console.log(`Received payload: ${data}`)
       var json = JSON.parse(data);
       json.push(newNote); 
       fs.writeFile("db/notes.json", JSON.stringify(json, null, 4), function(err){
@@ -80,7 +94,7 @@ app.post('/api/notes', (req, res) => {
         //-- otherwise log
         console.log('The "data to append" was appended to file!');
       });
-  })
+    });
 
 
     
