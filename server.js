@@ -115,6 +115,50 @@ app.post('/api/notes', (req, res) => {
 
 
 
+app.delete('/api/notes/:id', (req, res) => {
+
+  const { id } = req.params;
+  // console.info(req);
+  if(id){
+    console.info(`${req.method} request received to /api/notes/:id for note ${id}.`);
+
+    //-- Grab database
+    fs.readFile('./db/db.json', function (err, data) {
+
+      //-- exit if errors
+      if (err) throw err;
+
+      //-- otherwise, pull ID out of array
+      // console.log(`Received payload: ${data}`)
+      var json = JSON.parse(data);
+      var datbase_New = [];
+
+      for (note in json){
+        
+        let id_Holder = json[note].id;
+        
+        //-- if not the selected, add to database to prepare to overwrite
+        if (id_Holder != id){
+          // json.splice(note,0);
+          datbase_New.push(json[note])
+          
+        };
+      };
+
+      //-- update database with new 
+      fs.writeFile("db/db.json", JSON.stringify(datbase_New, null, 4), function(err){
+        //-- if error, exit
+        if (err) throw err;
+        
+        //-- otherwise log
+        console.log('The "data to append" was appended to file!');
+      });
+    });
+  }
+
+});
+
+
 // app.use('/api', apiRoutes);
 // // app.use('/', htmlRoutes);
 
