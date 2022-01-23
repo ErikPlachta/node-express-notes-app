@@ -19,7 +19,7 @@ const uuid = require('./helpers/uuid');
 
 //------------------------------------------------------------------------------
 //-- Route definitions
-const apiRoutes = require('./routes/apiRoutes');
+// const apiRoutes = require('./routes/apiRoutes');
 // const htmlRoutes = require('./routes/htmlRoutes');
 
 //------------------------------------------------------------------------------
@@ -38,11 +38,18 @@ app.use(express.static('public'));
 //------
 //-- API
 
+//-- notes database location
+const notes = require('./db/notes.json');
 //-- getting notes
-app.get('/api/notes', (req, res) => {
-  const notes = require('./db/notes.json');
-  res.json(notes);
+app.get('/api/notes', (req, res) =>  {
+  fs.readFile('./db/notes.json', function (err, data) {
+
+    //-- exit if errors
+    if (err) throw err;
+    res.json(JSON.parse(data))
+  });
 });
+
 
 //-- setting note into database
 app.post('/api/notes', (req, res) => {
@@ -51,24 +58,38 @@ app.post('/api/notes', (req, res) => {
 
 
   //-- Extract payload
-  const { title, body } = req.body;
+  const { title, text } = req.body;
+  console.log(req.body);
+  let response = {};
   
-  if (title && body) {
-    const newNote = {
-      title,
-      body,
-      note_ID: uuid(),
-    }
+  if (title && text) {
+    
+    
+    //-- check database
+    fs.readFile('./db/notes.json', function (err, data) {
 
-    const response = {
-      status: 'success',
-      body: JSON.stringify(newNote),
-    };
+      //-- exit if errors
+      if (err) throw err;
+      
+      //-- otherwise itterate thru database
+      // TODO:: 01/22/2022 #EP || Verify if UID already exists or not.
 
-    //-- Testing a response here
-    console.log(`Received post response: ${response}`);
-
-    fs.readFile('db/notes.json', function (err, data) {
+      //-- prepare to write new entry
+      const newNote = {
+        title,
+        text,
+        id: uuid(),
+      }
+  
+      response = {
+        status: 'success',
+        body: JSON.stringify(newNote),
+      };
+  
+      //-- Testing a response here
+      // console.log(`Received post response: ${newNote}`);
+    
+      // console.log(`Received payload: ${data}`)
       var json = JSON.parse(data);
       json.push(newNote); 
       fs.writeFile("db/notes.json", JSON.stringify(json, null, 4), function(err){
@@ -78,7 +99,7 @@ app.post('/api/notes', (req, res) => {
         //-- otherwise log
         console.log('The "data to append" was appended to file!');
       });
-  })
+    });
 
 
     
@@ -93,11 +114,11 @@ app.post('/api/notes', (req, res) => {
 });
 
 
+
 // app.use('/api', apiRoutes);
 // // app.use('/', htmlRoutes);
 
 
-app.get('/test', (reg, res) => res.status(200).send("Local response from server.js successful."));
 
 //-- Testing to verify direct routing works, here.
 // const path = require('path');
