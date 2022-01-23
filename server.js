@@ -41,22 +41,38 @@ app.use(express.static('public'));
 
 const db_Path = './db/db.json'; 
 
-//-- Checking is datbase already exists - If not, build it
+//-- Try to import the database. If it d oesn't exist, build it.
 try {
-
-
+  
   //-- notes database location
-  const notes = require('./db/db.json'); 
+  const notes = require('./db/db.json');
 
-  // if (fs.existsSync(notes)){
-  //   console.info(`//-- Verified database ${notes} exists.`);
-  // }
-  // else {
-  //   console.info(`//-- Database ${notes} does not exist. Creating..`);
-  // }
 }
+//-- It doesn't exist, build it
 catch (e) {
-    console.info(`//-- ERROR: ${e}\n//-- Database ${db_Path} does not exist. Creating..`);
+  console.info(`//-- ERROR: ${e}\n//-- Database ${db_Path} does not exist. Creating new database at ${db_Path}...`);
+  
+    //-- Get date
+    var d = new Date(); 
+    
+    const db_Default = [
+      {
+
+        "title" : `New Database Created ${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()}`,
+        "text" : `Database did not exist or was corrupt. Created a new database on ${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()} at ${d.getMinutes()}:${d.getSeconds()}:${d.getMilliseconds()}.`,
+        "id" : uuid()
+      }
+    ];
+    
+    fs.writeFile(db_Path, JSON.stringify(db_Default, null, 4), function(err){
+      //-- if error, exit
+      if (e) {
+        console.error(`//-- ERROR: ${e}\n//-- Unable to create new database. See admin.`)
+        throw e;
+      }
+      //-- otherwise log
+      console.info(`//-- Success. New blank database created: ${db_Path} `);
+    });
 }
 
 
@@ -111,67 +127,75 @@ app.post('/api/notes', (req, res) => {
       //-- exit if errors
       if (err) {
 
-        response.status = 'failed to open database.'
+        response.status = '//-- ERROR: Failed to open database.'
         throw err;
       }
+      //-- Else 
+      //-- Attempt to add new note to database
       
-      //-- otherwise itterate thru database
-      // TODO:: 01/22/2022 #EP || Verify if UID already exists or not.
-
+      //-- grab database and convert to JSON
+      var database_New = JSON.parse(data);
       
-  
-      //-- 
-      var json = JSON.parse(data);
-      json.push(newNote); 
-      fs.writeFile("db/db.json", JSON.stringify(json, null, 4), function(err){
-        //-- if error, exit
+      //-- Add new note to database
+      database_New.push(newNote); 
+      
+      // TODO:: 01/22/2022 #EP || Verify if UID already exists or not. 
+      
+      //-- Overwrite existing database with database_New, which contains new note.
+      fs.writeFile("db/db.json", JSON.stringify(database_New, null, 4), function(err){
+        
+        //-- if error, don't try to write.
         if (err) throw err;
         
         //-- otherwise log
-        console.log('The "data to append" was appended to file!');
+        console.info('//-- SUCCESS. The new note was added to database.');
       });
     });
-
-
     
-    //-- send response back to request
+    //-- send response back to HTML POST request
     res.json(response);
   }
+  
+  //-- Payload does not match requrirements, responding with error and what was sent in.
   else {
-    //-- If it receives a bad payload, to client
-    res.json(`Error in posting review: ${JSON.stringify(req.body)}`);
+    res.json(`//-- ERROR: Unable to save new note: ${JSON.stringify(req.body)}`);
   }
 
 });
 
 
-
+//-- Ran a delete request is made from `./public/assets/js/index.js deleteNote(id)
 app.delete('/api/notes/:id', (req, res) => {
 
   const { id } = req.params;
   // console.info(req);
   if(id){
-    console.info(`${req.method} request received to /api/notes/:id for note ${id}.`);
+    console.info(`//-- ${req.method} request received to /api/notes/:id for note ${id}.`);
 
     //-- Grab database
     fs.readFile('./db/db.json', function (err, data) {
 
       //-- exit if errors
       if (err) throw err;
+      
+      //-- ELSE
+      /*
+        Remove deleted note from database, by making a new array and overwrite
+        without note with provided id.
+      */
 
-      //-- otherwise, pull ID out of array
-      // console.log(`Received payload: ${data}`)
-      var json = JSON.parse(data);
+      //-- 
+      var database_Old = JSON.parse(data);
       var datbase_New = [];
 
-      for (note in json){
+      for (note in database_Old){
         
-        let id_Holder = json[note].id;
+        let id_Holder = database_Old[note].id;
         
         //-- if not the selected, add to database to prepare to overwrite
         if (id_Holder != id){
           // json.splice(note,0);
-          datbase_New.push(json[note])
+          datbase_New.push(database_Old[note])
           
         };
       };
@@ -182,7 +206,7 @@ app.delete('/api/notes/:id', (req, res) => {
         if (err) throw err;
         
         //-- otherwise log
-        console.info(`The note with id: ${id} has been removed from the database.`);
+        console.info(`//-- The note with id: ${id} has been removed from the database.`);
         res.json(`The note with id: ${id} has been removed from the database.`);
 
         res.me
@@ -193,10 +217,10 @@ app.delete('/api/notes/:id', (req, res) => {
 });
 
 
+//-- TODO:: 01/23/2022 #EP || Add routes vs direct in server.js
+
 // app.use('/api', apiRoutes);
 // // app.use('/', htmlRoutes);
-
-
 
 //-- Testing to verify direct routing works, here.
 // const path = require('path');
@@ -204,8 +228,6 @@ app.delete('/api/notes/:id', (req, res) => {
 //-- to get a JSON database
 // const notes = require('./db/db.json');
 // app.get('/notes', (req, res) => res.json(notes));
-
-
 
 //-------
 //-- HTML 
@@ -220,10 +242,8 @@ app.get('*', (req, res) => {
 });
 
 
-
 //------------------------------------------------------------------------------
 //-- Starting express server and telling it to stay open / listen for traffic
-
 app.listen(PORT, () => {
-  console.log(`API server now on port ${PORT}. http://127.0.0.1:${PORT}/`);
+  console.info(`\n//-- API server now on port ${PORT}. http://127.0.0.1:${PORT}/\n`);
 });
