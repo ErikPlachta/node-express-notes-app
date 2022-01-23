@@ -1,23 +1,7 @@
 [
     {
-<<<<<<< HEAD
-        "title":"Test Title",
-        "text":"Test text"
-    },
-    {
-        "title":"Test Title 2",
-        "text":"Test text 2"
-    }
-]
-=======
-        "title": "Title Placeholder",
-        "text": "Body placeholder content",
-        "id": "355e"
-    },
-    {
         "title": "Title Placeholder",
         "text": "Body placeholder content",
         "id": "f0ad"
     }
 ]
->>>>>>> f1746a63ea46f8fb9b6daec0986d952b76105549
