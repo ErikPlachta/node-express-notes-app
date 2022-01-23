@@ -19,7 +19,7 @@ Using Node to run an Express server hosted on Heroku
 
 ## Using the App
 
-> This APP is hosted here: <a href="fast-peak-76189.herokuapp.com/">fast-peak-76189.herokuapp.com/</a>, 
+> This APP is hosted here: <a href="fast-peak-76189.herokuapp.com/">fast-peak-76189.herokuapp.com/</a>,
 > and be used by anyone simply by browsing this URL.
 
 ## Requirements
@@ -53,7 +53,7 @@ Here is a video demonstrating what the APP can do!
 ### [Erik Plachta](https://github.com/ErikPlachta)
 
 - Built Node.js that is running an Express.js to play as a gateway between the EU
-and Heroku. 
+and Heroku.
 - Personalized source content
 
 ### [Xandromus - AKA - Xander Rapstine](https://github.com/Xandromus)
@@ -66,7 +66,7 @@ and Heroku.
 
 Let's get in touch :point_down:
 
-> Feel free to contact me on my Twitter @ErikPlachta 
+> Feel free to contact me on my Twitter @ErikPlachta
 
 ---
 
