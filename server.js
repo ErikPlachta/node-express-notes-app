@@ -19,7 +19,7 @@ const uuid = require('./helpers/uuid');
 
 //------------------------------------------------------------------------------
 //-- Route definitions
-const apiRoutes = require('./routes/apiRoutes');
+// const apiRoutes = require('./routes/apiRoutes');
 // const htmlRoutes = require('./routes/htmlRoutes');
 
 //------------------------------------------------------------------------------
@@ -38,11 +38,18 @@ app.use(express.static('public'));
 //------
 //-- API
 
+//-- notes database location
+const notes = require('./db/notes.json');
 //-- getting notes
-app.get('/api/notes', (req, res) => {
-  const notes = require('./db/notes.json');
-  res.json(notes);
+app.get('/api/notes', (req, res) =>  {
+  fs.readFile('./db/notes.json', function (err, data) {
+
+    //-- exit if errors
+    if (err) throw err;
+    res.json(JSON.parse(data))
+  });
 });
+
 
 //-- setting note into database
 app.post('/api/notes', (req, res) => {
@@ -59,15 +66,13 @@ app.post('/api/notes', (req, res) => {
     
     
     //-- check database
-    fs.readFile('db/notes.json', function (err, data) {
+    fs.readFile('./db/notes.json', function (err, data) {
 
       //-- exit if errors
       if (err) throw err;
       
       //-- otherwise itterate thru database
-      for(value in JSON.parse(data)){
-      console.log(value);
-      }
+      // TODO:: 01/22/2022 #EP || Verify if UID already exists or not.
 
       //-- prepare to write new entry
       const newNote = {
@@ -109,11 +114,11 @@ app.post('/api/notes', (req, res) => {
 });
 
 
+
 // app.use('/api', apiRoutes);
 // // app.use('/', htmlRoutes);
 
 
-app.get('/test', (reg, res) => res.status(200).send("Local response from server.js successful."));
 
 //-- Testing to verify direct routing works, here.
 // const path = require('path');
