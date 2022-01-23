@@ -36,11 +36,32 @@ app.use(express.static('public'));
 //-- Defining Routes
 
 
-//------
-//-- API
+//---------------------------------
+//-- API Routes
 
-//-- notes database location
-const notes = require('./db/db.json');
+const db_Path = './db/db.json'; 
+
+//-- Checking is datbase already exists - If not, build it
+try {
+
+
+  //-- notes database location
+  const notes = require('./db/db.json'); 
+
+  // if (fs.existsSync(notes)){
+  //   console.info(`//-- Verified database ${notes} exists.`);
+  // }
+  // else {
+  //   console.info(`//-- Database ${notes} does not exist. Creating..`);
+  // }
+}
+catch (e) {
+    console.info(`//-- ERROR: ${e}\n//-- Database ${db_Path} does not exist. Creating..`);
+}
+
+
+
+
 //-- getting notes
 app.get('/api/notes', (req, res) =>  {
   fs.readFile('./db/db.json', function (err, data) {
@@ -60,37 +81,46 @@ app.post('/api/notes', (req, res) => {
 
   //-- Extract payload
   const { title, text } = req.body;
-  console.log(req.body);
+  
+  //-- Info log for awareness during testing and database logs
+  console.info(`//-- Received new note: ${JSON.stringify(req.body)}`);
+  
+  //--Creating var to hold response 
   let response = {};
   
+  //-- If the note has a title and text, open the database and then write to database.
   if (title && text) {
+
+    //-- Build note obj with UID to be written to database
+    const newNote = {
+      title,
+      text,
+      id: uuid(),
+    }
+    
+    //-- Build response to send back to client containing note in standard GET response formatting
+    response = {
+      status: 'success',
+      body: JSON.stringify(newNote),
+    };
     
     
-    //-- check database
+    //-- Open database, and append new note to it if able to open.
     fs.readFile('./db/db.json', function (err, data) {
 
       //-- exit if errors
-      if (err) throw err;
+      if (err) {
+
+        response.status = 'failed to open database.'
+        throw err;
+      }
       
       //-- otherwise itterate thru database
       // TODO:: 01/22/2022 #EP || Verify if UID already exists or not.
 
-      //-- prepare to write new entry
-      const newNote = {
-        title,
-        text,
-        id: uuid(),
-      }
+      
   
-      response = {
-        status: 'success',
-        body: JSON.stringify(newNote),
-      };
-  
-      //-- Testing a response here
-      // console.log(`Received post response: ${newNote}`);
-    
-      // console.log(`Received payload: ${data}`)
+      //-- 
       var json = JSON.parse(data);
       json.push(newNote); 
       fs.writeFile("db/db.json", JSON.stringify(json, null, 4), function(err){
