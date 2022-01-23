@@ -39,10 +39,10 @@ app.use(express.static('public'));
 //-- API
 
 //-- notes database location
-const notes = require('./db/notes.json');
+const notes = require('./db/db.json');
 //-- getting notes
 app.get('/api/notes', (req, res) =>  {
-  fs.readFile('./db/notes.json', function (err, data) {
+  fs.readFile('./db/db.json', function (err, data) {
 
     //-- exit if errors
     if (err) throw err;
@@ -66,7 +66,7 @@ app.post('/api/notes', (req, res) => {
     
     
     //-- check database
-    fs.readFile('./db/notes.json', function (err, data) {
+    fs.readFile('./db/db.json', function (err, data) {
 
       //-- exit if errors
       if (err) throw err;
@@ -92,7 +92,7 @@ app.post('/api/notes', (req, res) => {
       // console.log(`Received payload: ${data}`)
       var json = JSON.parse(data);
       json.push(newNote); 
-      fs.writeFile("db/notes.json", JSON.stringify(json, null, 4), function(err){
+      fs.writeFile("db/db.json", JSON.stringify(json, null, 4), function(err){
         //-- if error, exit
         if (err) throw err;
         
@@ -124,7 +124,7 @@ app.post('/api/notes', (req, res) => {
 // const path = require('path');
 
 //-- to get a JSON database
-// const notes = require('./db/notes.json');
+// const notes = require('./db/db.json');
 // app.get('/notes', (req, res) => res.json(notes));
 
 

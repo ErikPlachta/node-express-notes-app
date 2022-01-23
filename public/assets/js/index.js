@@ -131,7 +131,7 @@ const renderNoteList = async (notes) => {
   let jsonNotes = await notes.json();
   // console.log(`jsonNotes: ${JSON.stringify(jsonNotes)}`);
 
-  console.log(noteList)
+  // console.log(noteList)
   if (window.location.pathname === '/notes') {
     // console.log("if (window.location.pathname === '/notes')");
     noteList.forEach((el) => ( el.innerHTML = ''));
@@ -188,7 +188,6 @@ const renderNoteList = async (notes) => {
 //------------------------------------------------------------------------------
 // Gets notes from the db and renders them to the sidebar
 const getAndRenderNotes = () => {
-  console.log("AHH")
  getNotes()
  .then(renderNoteList);
 }
