@@ -3,7 +3,8 @@
 
 //-- onboard express.js server
 const express = require('express');
-//-- define port
+
+//-- define port locally or based on env
 const PORT = process.env.PORT || 3001;
 //-- create instance
 const app = express();
